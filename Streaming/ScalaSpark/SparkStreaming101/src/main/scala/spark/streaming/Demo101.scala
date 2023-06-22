@@ -13,6 +13,7 @@ object Demo101 extends  App {
     .master("local[*]")
     .appName("SparkStreamingDemo")
     .getOrCreate()
+
   spark.sparkContext.setLogLevel("WARN")
 
   sparkInfo(spark)
@@ -33,7 +34,7 @@ object Demo101 extends  App {
 
 
   val df_final = dfStream_cast
-    .withColumn("json_Data", from_json(col("value"),sch_json_2))
+    .withColumn("json_Data", from_json(col("value"),sch_json))
     .select(
       col("offset"),
       col("timestamp"),
@@ -49,7 +50,7 @@ object Demo101 extends  App {
   val query = (df_final
     .writeStream
     .outputMode("update")
-    .trigger(Trigger.ProcessingTime("5 seconds"))
+    .trigger(Trigger.ProcessingTime("3 seconds"))
     .option("truncate", value = false)
     .format("console")
     .start()

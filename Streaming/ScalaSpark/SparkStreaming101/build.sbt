@@ -15,8 +15,6 @@ libraryDependencies ++= {
     "org.apache.spark" %% "spark-core" % sparkV,
     "org.apache.spark" %% "spark-sql" % sparkV,
     "org.apache.spark" %% "spark-streaming" % sparkV,
-    "org.apache.spark" %% "spark-sql-kafka-0-10" % sparkV,
-    "org.apache.hadoop" % "hadoop-common" % hadoopV,
-    "org.apache.hadoop" % "hadoop-client" % hadoopV
+    "org.apache.spark" %% "spark-sql-kafka-0-10" % sparkV
   )
 }
